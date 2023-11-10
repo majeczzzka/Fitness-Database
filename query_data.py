@@ -27,7 +27,7 @@ GROUP BY
 """
 
 # Execute the sleep goal query
-cursor.execute(sleep_goal_query)
+cursor.execute(sleep_goal_query)  # transaction
 sleep_goal_results = cursor.fetchall()
 
 # Print the sleep goal results in a formatted table
@@ -64,7 +64,7 @@ GROUP BY
 """
 
 # Execute the sleep quality query and fetch the results
-cursor.execute(min_sleep_quality_query)
+cursor.execute(min_sleep_quality_query)  # transaction
 min_sleep_for_good_quality_results = cursor.fetchall()
 
 # Print the minimum sleep duration for good quality results in a formatted table # noqa
@@ -88,17 +88,17 @@ SELECT
     u.Username,
     (u.Weight / ((u.Height / 100.0) * (u.Height / 100.0))) AS BMI,
     CASE
-        WHEN (u.Weight / ((u.Height / 100.0) * (u.Height / 100.0))) < 18.5 THEN 'Underweight' # noqa
+        WHEN (u.Weight / ((u.Height / 100.0) * (u.Height / 100.0))) < 18.5 THEN 'Underweight' 
         WHEN (u.Weight / ((u.Height / 100.0) * (u.Height / 100.0))) BETWEEN 18.5 AND 24.9 THEN 'Healthy weight'
         WHEN (u.Weight / ((u.Height / 100.0) * (u.Height / 100.0))) BETWEEN 25 AND 29.9 THEN 'Overweight'
         ELSE 'Obese'
     END AS BMICategory
 FROM
     Users u;
-"""
+"""  # noqa
 
 # Execute the BMI query and fetch the results
-cursor.execute(bmi_query)
+cursor.execute(bmi_query)  # transaction
 bmi_results = cursor.fetchall()
 
 # Print the BMI results in a formatted table
@@ -134,7 +134,7 @@ GROUP BY
 """
 
 # Execute the performance query and fetch the results
-cursor.execute(performance_query)
+cursor.execute(performance_query)  # transaction
 performance_results = cursor.fetchall()
 
 # Print the performance results in a formatted table
@@ -185,7 +185,7 @@ FROM
 """
 
 # Execute the TDEE query and fetch the results
-cursor.execute(tdee_query)
+cursor.execute(tdee_query)  # transaction
 tdee_results = cursor.fetchall()
 
 # Print the TDEE results in a formatted table
@@ -210,7 +210,7 @@ JOIN
 GROUP BY
     e.Name;
 """
-cursor.execute(fav_query)
+cursor.execute(fav_query)  # transaction
 fav_results = cursor.fetchall()
 
 # Print the favorite exercise results in a formatted table
@@ -222,6 +222,5 @@ print(
         tablefmt="fancy_grid",
     )
 )
-
 # Close the database connection
 conn.close()

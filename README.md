@@ -4,6 +4,21 @@
 
 The Health and Fitness Tracking App is a comprehensive solution designed to help users monitor and improve their health and fitness. It enables tracking of various health metrics, including workout sessions, nutrition, sleep patterns, and offers personalized fitness recommendations. This application is ideal for individuals looking to achieve fitness goals and maintain a healthy lifestyle.
 
+## Primary Objectives:
+
+Comprehensive Health Monitoring: To provide a platform where users can track a wide range of health and fitness metrics, enabling a complete overview of their well-being.
+Goal Setting and Progress Tracking: To assist users in setting realistic health and fitness goals and track their progress over time.
+Personalized Recommendations: To offer personalized tips and recommendations based on the user’s unique health data and progress.
+Encourage Healthy Habits: To motivate users to adopt and maintain healthy lifestyle habits through regular monitoring and feedback.
+
+## Target Audience:
+
+The app caters to a diverse range of users, including:
+
+Fitness enthusiasts seeking to track their workout and dietary habits.
+People with specific health conditions who need to monitor various health metrics regularly.
+Anyone interested in maintaining an overall healthy lifestyle and keen on having a data-driven approach to their health.
+
 ## Installation
 
 ### For macOS:

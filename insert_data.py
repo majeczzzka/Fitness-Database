@@ -29,7 +29,9 @@ metadata = MetaData()
 users = Table(
     "Users",
     metadata,
-    Column("UserID", Integer, primary_key=True),
+    Column(
+        "UserID", Integer, primary_key=True
+    ),  # The use of primary keys automatically creates indices in the database. # noqa
     Column("Username", String(255), nullable=False),
     Column("Email", String(255), nullable=False, unique=True),
     Column("DateOfBirth", Date, nullable=False),
@@ -116,7 +118,7 @@ with engine.connect() as connection:
                     ),
                     BMR=round(random.uniform(1200, 2500), 2),
                 )
-                result = connection.execute(fake_user)
+                result = connection.execute(fake_user)  # insertion transaction
                 user_id = result.inserted_primary_key[0]
                 user_ids.append(user_id)
 
@@ -125,7 +127,7 @@ with engine.connect() as connection:
                     users.update()
                     .values(FavoriteExerciseID=random.randint(1, 11))
                     .where(users.c.UserID == user_id)
-                )
+                )  # insertion transaction
 
             # Inserting fake exercise data
             exercise_ids = []
@@ -146,7 +148,7 @@ with engine.connect() as connection:
                     ["Light", "Moderate", "Hard", "Very Hard"]
                 ),  # noqa
             )
-            result = connection.execute(fake_exercise)
+            result = connection.execute(fake_exercise)  # insertion transaction
             exercise_ids.append(result.inserted_primary_key[0])
 
             # Inserting fake workout data for each user
@@ -162,7 +164,7 @@ with engine.connect() as connection:
                         ["Light", "Moderate", "Hard", "Very Hard"]
                     ),  # noqa
                 )
-                connection.execute(fake_workout)
+                connection.execute(fake_workout)  # insertion transaction
 
             # Inserting fake sleep record data for each user
             for _ in range(10):
@@ -172,7 +174,7 @@ with engine.connect() as connection:
                     SleepDuration=random.randint(4, 12),
                     SleepQuality=random.choice(["Good", "Fair", "Poor"]),
                 )
-                connection.execute(fake_sleep_record)
+                connection.execute(fake_sleep_record)  # insertion transaction
 
             # Inserting fake nutrition log data for each user
             for _ in range(3):  # Assuming three meals a day
@@ -181,7 +183,7 @@ with engine.connect() as connection:
                     Date=fake.date_between(start_date="-30d", end_date="today"),  # noqa
                     Calories=random.randint(1200, 3500),
                 )
-                connection.execute(fake_nutrition_log)
+                connection.execute(fake_nutrition_log)  # insertion transaction
 
         # Commit the transaction if no errors occur
         connection.commit()
