@@ -1,7 +1,3 @@
-Based on the provided details of your Health and Fitness Tracking App project, here is a draft README for your project:
-
----
-
 # Health and Fitness Tracking App
 
 ## Overview
